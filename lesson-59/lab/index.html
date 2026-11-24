@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Лабораторная работа: изучение строения органа слуха на 3D атласе.">
+<title>Изучение строения органа слуха (на 3D атласе)</title>
+<style>
+:root{--ink:#121a17;--mint:#e5f3ec;--green:#3d8b73;--paper:#fff;--soft:#f7faf8;--border:#c9d9d0;--gray:#55645c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef1ed;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+.sheet{max-width:1080px;margin:24px auto;background:var(--paper);border:2px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:10px 10px 0 #dcebe2}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-bottom:2px solid var(--ink);align-items:stretch}
+.hero-copy{min-width:0;padding:54px 7% 46px 9%;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-size:13px;font-weight:900;letter-spacing:.19em;text-transform:uppercase;color:var(--green)}
+h1{font-size:clamp(26px,2.9vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin:22px 0;overflow-wrap:normal;word-break:normal;hyphens:none}
+.lead{font-size:17px;margin:0 0 22px}.meta{display:grid;gap:12px}.meta-item{border:2px solid var(--ink);background:var(--soft);border-radius:15px;padding:14px 18px;font-size:15px}.meta-item b{display:block;letter-spacing:.1em;text-transform:uppercase;font-size:12px;margin-bottom:5px}
+.hero-art{border-left:2px solid var(--ink);background:#f9fbf9;display:flex;align-items:center;justify-content:center;padding:16px}.hero-art img{width:100%;height:auto;object-fit:contain;display:block;border-radius:12px}
+.chapter{padding:47px 7%;border-bottom:2px solid var(--ink)}.head{display:flex;align-items:center;gap:14px;margin-bottom:18px}.round{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border:2px solid var(--ink);border-radius:50%;background:var(--mint);font-weight:900;font-size:17px}h2{font-size:clamp(24px,3vw,35px);line-height:1.16;margin:0;letter-spacing:-.035em}h3{font-size:19px;line-height:1.3;margin:0 0 10px}p{font-size:16px;margin:13px 0}.note{background:var(--mint);border-left:5px solid var(--green);padding:16px 21px;border-radius:0 14px 14px 0;margin:19px 0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{border:2px solid var(--ink);border-radius:16px;padding:17px;background:var(--soft)}.panel p{margin:6px 0 0;font-size:15px}
+.atlas{border:2px solid var(--ink);border-radius:20px;overflow:hidden;margin:24px 0}.atlas-top{padding:13px 17px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:2px solid var(--ink);font-size:14px;font-weight:800;background:var(--mint)}.atlas iframe{display:block;width:100%;height:510px;border:0;background:#f0f4f2}.atlas-bottom{padding:14px 18px;background:#fff;font-size:14px;border-top:1px solid var(--border)}.terms{border:2px solid var(--ink);border-radius:17px;overflow:hidden;margin-top:18px}.terms-head{padding:12px 18px;background:var(--soft);font-weight:900;border-bottom:2px solid var(--ink)}.terms-grid{display:grid;grid-template-columns:1fr 1fr}.term{padding:10px 17px;border-bottom:1px solid var(--border);font-size:14px;min-width:0}.term:nth-child(odd){border-right:1px solid var(--border)}.term b{display:block;overflow-wrap:anywhere}
+a{color:#216b54;text-underline-offset:3px}.linkbtn{display:inline-block;border:2px solid var(--ink);background:var(--mint);padding:9px 17px;border-radius:99px;color:var(--ink);text-decoration:none;font-weight:800;box-shadow:3px 3px 0 var(--ink);margin-top:8px}
+.steps{display:grid;gap:14px}.step{border:2px solid var(--ink);border-radius:17px;padding:20px 21px;background:#fff}.step-top{display:flex;align-items:center;gap:12px}.step-num{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border:2px solid var(--ink);border-radius:50%;background:var(--mint);font-weight:900}.step h3{margin:0}.step ul{margin:11px 0 0;padding-left:22px}.step li{margin:6px 0}.answerhint{font-size:13px;color:var(--gray);margin-top:12px;background:var(--soft);border:1px dashed #92ada0;border-radius:11px;padding:9px 13px}
+.route{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:12px 0}.route span,.route b{border:1px solid var(--border);background:var(--soft);padding:9px 12px;border-radius:10px;font-size:14px}.route i{font-style:normal;font-size:18px;color:var(--green)}.route .blank{border:2px dashed #88ac99;background:#eef7f0;min-width:104px;text-align:center}
+.footer{padding:20px 7%;background:var(--mint);text-align:right;font-size:14px;font-weight:800}.footer a{color:var(--ink)}
+@media(max-width:820px){body{background:#fff}.sheet{border:0;box-shadow:none;border-radius:0;margin:0}.hero{grid-template-columns:1fr}.hero-copy{padding:39px 7%}.hero-art{border-left:0;border-top:2px solid var(--ink);padding:17px 7%}.hero-art img{max-width:580px}.chapter{padding:34px 6%}.pair{grid-template-columns:1fr}.atlas iframe{height:420px}}@media(max-width:480px){h1{font-size:clamp(24px,6vw,31px)}.atlas iframe{height:360px}.atlas-top{display:block}.step{padding:17px}.route{gap:5px}.route span,.route b{font-size:12px;padding:8px}.chapter{padding:30px 5%}}
+@media(max-width:500px){.terms-grid{grid-template-columns:1fr}.term:nth-child(odd){border-right:0}}
+@media print{.sheet{box-shadow:none;margin:0}.atlas iframe{display:none}.step{break-inside:avoid}}
+</style>
+</head>
+<body>
+<main class="sheet" id="top">
+<section class="hero" aria-labelledby="lab-title">
+<div class="hero-copy"><div class="eyebrow">Лабораторная работа</div><h1 id="lab-title">Изучение строения органа слуха (на 3D атласе)</h1><p class="lead">Как расположены части уха и каким образом их строение обеспечивает восприятие звука? Исследование объёмной модели поможет установить взаимосвязи между структурами органа слуха.</p><div class="meta"><div class="meta-item"><b>Цель</b>Изучить строение наружного, среднего и внутреннего уха и объяснить путь передачи звуковых колебаний.</div><div class="meta-item"><b>Материалы</b>Интерактивный 3D-анатомический атлас органа слуха, тетрадь для записи наблюдений.</div></div></div>
+<div class="hero-art"><img src="images/ear-anatomy.png" width="1648" height="928" alt="Авторская обзорная схема наружного, среднего и внутреннего уха: ушная раковина, слуховой проход, барабанная перепонка, слуховые косточки, улитка, полукружные каналы, слуховой нерв и слуховая труба."></div>
+</section>
+<section class="chapter" id="orientation"><div class="head"><span class="round">01</span><h2>Перед началом исследования</h2></div>
+<p>Орган слуха включает <strong>наружное, среднее и внутреннее ухо</strong>. Наружное ухо направляет звук к барабанной перепонке. В среднем ухе расположены три слуховые косточки, передающие её колебания во внутреннее ухо. В улитке находятся чувствительные клетки, преобразующие механическое воздействие в нервные сигналы.</p>
+<div class="pair"><div class="panel"><h3>Как работать с моделью</h3><p>Вращение позволяет рассматривать структуры с разных сторон, приближение — исследовать мелкие детали. При наличии панели объектов можно скрывать отдельные слои.</p></div><div class="panel"><h3>Что необходимо установить</h3><p>Не только названия структур, но и их <strong>положение друг относительно друга</strong>, связи между отделами и путь проведения звуковых колебаний.</p></div></div>
+</section>
+<section class="chapter" id="atlas"><div class="head"><span class="round">02</span><h2>3D-атлас органа слуха</h2></div><p>Изучите модель, поворачивая её и увеличивая необходимые участки. Для точного поиска слуховых косточек и внутреннего уха используйте доступные ракурсы и подписи модели, если они предусмотрены.</p>
+<div class="atlas"><div class="atlas-top"><span>Интерактивная 3D-модель органа слуха</span><span>Вращение · Приближение</span></div>
+<iframe src="https://sketchfab.com/models/36418178e0cf499694ac21e82ab2e77c/embed?autostart=0" title="Интерактивная 3D-модель строения наружного, среднего и внутреннего уха (Sketchfab, Anatomary)" loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<div class="atlas-bottom">3D-модель предоставляется внешним анатомическим ресурсом Sketchfab (автор Anatomary). Если модель внутри страницы не открывается, используйте <a href="https://sketchfab.com/3d-models/structures-of-the-ear-36418178e0cf499694ac21e82ab2e77c" target="_blank" rel="noopener noreferrer">отдельную страницу 3D-атласа</a>. Для работы требуется подключение к интернету.</div></div>
+<div class="terms" aria-labelledby="terms-title"><div class="terms-head" id="terms-title">Перевод анатомических терминов</div><div class="terms-grid">
+<div class="term"><b>External ear</b>Наружное ухо</div>
+<div class="term"><b>Auricle / Pinna</b>Ушная раковина</div>
+<div class="term"><b>External auditory canal / External acoustic meatus</b>Наружный слуховой проход</div>
+<div class="term"><b>Tympanic membrane / Eardrum</b>Барабанная перепонка</div>
+<div class="term"><b>Middle ear</b>Среднее ухо</div>
+<div class="term"><b>Malleus</b>Молоточек</div>
+<div class="term"><b>Incus</b>Наковальня</div>
+<div class="term"><b>Stapes</b>Стремечко</div>
+<div class="term"><b>Oval window</b>Овальное окно</div>
+<div class="term"><b>Round window</b>Круглое окно</div>
+<div class="term"><b>Auditory tube / Eustachian tube</b>Слуховая (евстахиева) труба</div>
+<div class="term"><b>Inner ear / Internal ear</b>Внутреннее ухо</div>
+<div class="term"><b>Cochlea</b>Улитка</div>
+<div class="term"><b>Vestibule</b>Преддверие</div>
+<div class="term"><b>Semicircular canals</b>Полукружные каналы</div>
+<div class="term"><b>Cochlear nerve</b>Улитковый нерв</div>
+<div class="term"><b>Vestibulocochlear nerve</b>Преддверно-улитковый нерв</div>
+<div class="term"><b>Temporal bone</b>Височная кость</div>
+</div></div>
+<div class="note"><strong>Ориентир:</strong> на обзорной схеме выше можно увидеть отделы органа слуха. Основные задания следует выполнять по 3D-модели, исследуя взаимное расположение структур.</div>
+</section>
+<section class="chapter" id="tasks"><div class="head"><span class="round">03</span><h2>Ход работы</h2></div><div class="steps">
+<div class="step"><div class="step-top"><span class="step-num">1</span><h3>Наружное ухо</h3></div><p>Найдите на модели наружное ухо. Определите ушную раковину, наружный слуховой проход и барабанную перепонку. Укажите, какая структура расположена на границе наружного и среднего уха.</p><div class="answerhint">Названия и взаимное расположение структур запишите в тетрадь.</div></div>
+<div class="step"><div class="step-top"><span class="step-num">2</span><h3>Среднее ухо</h3></div><p>Найдите молоточек, наковальню и стремечко. Рассмотрите их расположение относительно барабанной перепонки и внутреннего уха. Укажите порядок расположения слуховых косточек от наружного уха к внутреннему.</p></div>
+<div class="step"><div class="step-top"><span class="step-num">3</span><h3>Слуховая (евстахиева) труба</h3></div><p>Найдите слуховую трубу. Определите, с какой областью она соединяет полость среднего уха. Объясните, почему для работы барабанной перепонки важно выравнивание давления воздуха по обе её стороны.</p></div>
+<div class="step"><div class="step-top"><span class="step-num">4</span><h3>Внутреннее ухо</h3></div><p>Найдите структуры внутреннего уха: улитку, преддверие и полукружные каналы. Определите расположение улитки относительно слуховых косточек. Найдите нервные волокна, передающие слуховую информацию в головной мозг.</p><div class="answerhint">В разных атласах может использоваться название «улитковый нерв» или «слуховая часть преддверно-улиткового нерва».</div></div>
+<div class="step"><div class="step-top"><span class="step-num">5</span><h3>Путь звуковых колебаний</h3></div><p>Восстановите пропущенные звенья последовательности. Запишите полную цепочку в тетрадь.</p>
+<div class="route" aria-label="Последовательность прохождения звука с тремя пропусками"><span>Наружный слуховой проход</span><i>→</i><b class="blank">Пропуск 1</b><i>→</i><span>Молоточек</span><i>→</i><b class="blank">Пропуск 2</b><i>→</i><span>Стремечко</span><i>→</i><b class="blank">Пропуск 3</b><i>→</i><span>Рецепторы улитки</span></div>
+<p>Дополнительно укажите, в какой части органа слуха механические колебания преобразуются в нервные сигналы.</p></div>
+<div class="step"><div class="step-top"><span class="step-num">6</span><h3>Функции слуховых косточек</h3></div><p>Объясните, для чего необходимы молоточек, наковальня и стремечко. Почему звуковые колебания передаются от барабанной перепонки к структурам внутреннего уха именно через эту цепочку?</p></div>
+</div></section>
+<section class="chapter" id="conclusion"><div class="head"><span class="round">04</span><h2>Вывод</h2></div><p>Сформулируйте вывод о связи строения органа слуха с выполняемой им функцией. В ответе необходимо отразить роль каждого из трёх отделов уха, слуховых косточек, рецепторов улитки и слухового нерва.</p><div class="note"><strong>Проверьте полноту вывода:</strong> объяснено, как звук попадает в ухо, каким образом передаются колебания, где возникают нервные сигналы и как они достигают головного мозга.</div></section>
+<footer class="footer"><a href="#top">К началу ↑</a></footer>
+</main>
+</body>
+</html>
